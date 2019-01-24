@@ -1,10 +1,10 @@
-const clone = require('clone')
+const clone = require('clone');
 
-let db = {}
+const db = {};
 
 const defaultData = {
-  "8xf0y6ziyjabvozdd253nd": {
-    id: '8xf0y6ziyjabvozdd253nd',
+  '4tvzo9mkfmajw8phfjk18s': {
+    id: '4tvzo9mkfmajw8phfjk18s',
     timestamp: 1467166872634,
     title: 'Udacity is the best place to learn React',
     body: 'Everyone says so after all.',
@@ -12,10 +12,10 @@ const defaultData = {
     category: 'react',
     voteScore: 6,
     deleted: false,
-    commentCount: 2
+    commentCount: 2,
   },
-  "6ni6ok3ym7mf1p33lnez": {
-    id: '6ni6ok3ym7mf1p33lnez',
+  'pasicpejhzjeuvc3q2usds': {
+    id: 'pasicpejhzjeuvc3q2usds',
     timestamp: 1468479767190,
     title: 'Learn Redux in 10 minutes!',
     body: 'Just kidding. It takes more than 10 minutes to learn technology.',
@@ -23,118 +23,99 @@ const defaultData = {
     category: 'redux',
     voteScore: -5,
     deleted: false,
-    commentCount: 0
-  }
+    commentCount: 0,
+  },
+};
+
+function getData(token) {
+  return db[token] = db[token] || clone(defaultData);
 }
 
-function getData (token) {
-  let data = db[token]
-  if (data == null) {
-    data = db[token] = clone(defaultData)
-  }
-  return data
+function getByCategory(token, category) {
+  const posts = getData(token);
+  const result = Object.keys(posts)
+    .filter(id => posts[id].category === category && !posts[id].deleted)
+    .map(id => posts[id]);
+  return Promise.resolve(result);
 }
 
-function getByCategory (token, category) {
-  return new Promise((res) => {
-    let posts = getData(token)
-    let keys = Object.keys(posts)
-    let filtered_keys = keys.filter(key => posts[key].category === category && !posts[key].deleted)
-    res(filtered_keys.map(key => posts[key]))
-  })
+function get(token, id) {
+  const post = getData(token)[id];
+  return Promise.resolve(!post || post.deleted ? {} : post);
 }
 
-function get (token, id) {
-  return new Promise((res) => {
-    const posts = getData(token)
-    res(
-      posts[id].deleted
-        ? {}
-        : posts[id]
-    )
-  })
+function getAll(token) {
+  const posts = getData(token);
+  const result = Object.keys(posts)
+    .filter(id => !posts[id].deleted)
+    .map(id => posts[id]);
+  return Promise.resolve(result);
 }
 
-function getAll (token) {
-  return new Promise((res) => {
-    const posts = getData(token)
-    let keys = Object.keys(posts)
-    let filtered_keys = keys.filter(key => !posts[key].deleted)
-    res(filtered_keys.map(key => posts[key]))
-  })
+function add(token, data) {
+  const posts = getData(token);
+
+  posts[data.id] = {
+    id: data.id,
+    timestamp: data.timestamp,
+    title: data.title,
+    body: data.body,
+    author: data.author,
+    category: data.category,
+    voteScore: 1,
+    deleted: false,
+    commentCount: 0,
+  };
+
+  return Promise.resolve(posts[data.id]);
 }
 
-function add (token, post) {
-  return new Promise((res) => {
-    let posts = getData(token)
-
-    posts[post.id] = {
-      id: post.id,
-      timestamp: post.timestamp,
-      title: post.title,
-      body: post.body,
-      author: post.author,
-      category: post.category,
-      voteScore: 1,
-      deleted: false,
-      commentCount: 0
+function vote(token, id, option) {
+  const post = getData(token)[id];
+  switch (option) {
+    case 'up': {
+      post.voteScore = post.voteScore + 1;
+      break;
     }
-
-    res(posts[post.id])
-  })
-}
-
-function vote (token, id, option) {
-  return new Promise((res) => {
-    let posts = getData(token)
-    post = posts[id]
-    switch(option) {
-        case "upVote":
-            post.voteScore = post.voteScore + 1
-            break
-        case "downVote":
-            post.voteScore = post.voteScore - 1
-            break
-        default:
-            console.log(`posts.vote received incorrect parameter: ${option}`)
+    case 'down': {
+      post.voteScore = post.voteScore - 1;
+      break;
     }
-    res(post)
-  })
+    default: {
+      console.log(`posts.vote received incorrect parameter: ${option}`);
+    }
+  }
+  return Promise.resolve(post);
 }
 
-function disable (token, id) {
-    return new Promise((res) => {
-      let posts = getData(token)
-      posts[id].deleted = true
-      res(posts[id])
-    })
+function disable(token, id) {
+  const post = getData(token)[id];
+  post.deleted = true;
+  return Promise.resolve(post);
 }
 
-function edit (token, id, post) {
-    return new Promise((res) => {
-        let posts = getData(token)
-        for (prop in post) {
-            posts[id][prop] = post[prop]
-        }
-        res(posts[id])
-    })
+function edit(token, id, data) {
+  const post = getData(token)[id];
+  for (const key in data) {
+    post[key] = data[key];
+  }
+  return Promise.resolve(post);
 }
 
 function incrementCommentCounter(token, id, count) {
-  const data = getData(token)
-  if (data[id]) {
-    data[id].commentCount += count
+  const post = getData(token)[id];
+  if (post) {
+    post.commentCount += count;
   }
 }
 
 module.exports = {
+  add,
   get,
   getAll,
   getByCategory,
-  add,
+  edit,
   vote,
   disable,
-  edit,
-  getAll,
-  incrementCommentCounter
-}
+  incrementCommentCounter,
+};

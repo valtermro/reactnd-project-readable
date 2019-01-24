@@ -1,0 +1,16 @@
+.PostForm {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.PostForm__FormText {
+  height: 200px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .PostForm__FormGroup:not(.full-width) {
+    max-width: 300px;
+    margin-right: 20px;
+  }
+}

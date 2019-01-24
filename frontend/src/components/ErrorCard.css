@@ -1,0 +1,31 @@
+.ErrorCard {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 14px;
+  align-items: flex-start;
+}
+
+.ErrorCard:last-child {
+  margin-bottom: 0;
+}
+
+
+.ErrorCard__Message {
+  flex-grow: 1;
+}
+
+.ErrorCard__ObjectLink {
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+
+.ErrorCard__CloseButton {
+  width: 18px;
+  height: 18px;
+  line-height: 0;
+  flex-shrink: 0;
+}

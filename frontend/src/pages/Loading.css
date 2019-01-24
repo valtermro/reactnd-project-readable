@@ -1,0 +1,20 @@
+.LoadingPage {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.LoadingPage__Icon {
+  width: 38px;
+  height: 38px;
+  animation: LoadingPage__Icon infinite 2000ms ease-in-out;
+  color: #606060;
+}
+
+@keyframes LoadingPage__Icon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

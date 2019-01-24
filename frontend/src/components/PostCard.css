@@ -1,0 +1,78 @@
+.PostCard {
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 15px 20px 20px;
+  width: 100%;
+}
+
+.PostCard__Head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.PostCard__CategoryLink {
+  padding: 4px 8px 4px 0;
+}
+
+
+.PostCard__Body {
+  margin-top: 14px;
+}
+
+.PostCard__PostTitle {
+  color: #005050;
+  font-size: 20px;
+}
+
+.PostCard__PostLink:hover {
+  text-decoration: underline;
+}
+
+.PostCard__PostMeta {
+  margin-top: 8px;
+}
+
+.PostCard__PostAuthor {
+  color: #303030;
+  font-weight: 500;
+}
+
+
+.PostCard__Foot {
+  margin-top: 30px;
+  display: flex;
+}
+
+.PostCard__CommentCount {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.PostCard__CommentIcon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .PostCard {
+    margin-left: 0;
+    margin-right: 0;
+    width: calc(50% - 10px);
+  }
+}
+
+
+@media screen and (min-width: 980px) {
+  .PostCard {
+    width: calc(50% - 15px);
+    margin-bottom: 30px;
+  }
+
+  .PostCard__PostTitle {
+    font-size: 24px;
+  }
+}

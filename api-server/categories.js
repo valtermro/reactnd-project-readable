@@ -1,41 +1,35 @@
-const clone = require('clone')
-const config = require('./config')
+const clone = require('clone');
 
-let db = {}
+const db = {};
 
 const defaultData = {
-  categories: [
-      {
-        name: 'react',
-        path: 'react'
-      },
-      {
-        name: 'redux',
-        path: 'redux'
-      },
-      {
-        name: 'udacity',
-        path: 'udacity'
-      }
-  ]
+  // The id of a category should be a unique string suitable for a readable url segment
+  // as the client uses it to build the url for any resources under that category
+  'react': {
+    id: 'react',
+    name: 'react',
+  },
+  'redux': {
+    id: 'redux',
+    name: 'redux',
+  },
+  'udacity': {
+    id: 'udacity',
+    name: 'udacity',
+  },
+};
+
+function getData(token) {
+  return db[token] = db[token] || clone(defaultData);
 }
 
-function getData (token) {
-  //Each token has it's own copy of the DB. The token in this case is like an app id.
-  let data = db[token]
-  //This populates the default user data if there isn't any in the db.
-  if (data == null) {
-    data = db[token] = clone(defaultData)
-  }
-  return data
+function get(token, id) {
+  const data = getData(token);
+  return Promise.resolve(data[id] || {});
 }
 
-function getAll (token) {
-  return new Promise((res) => {
-    res(getData(token))
-  })
+function getAll(token) {
+  return Promise.resolve(Object.values(getData(token)));
 }
 
-module.exports = {
-  getAll
-}
+module.exports = { get, getAll };

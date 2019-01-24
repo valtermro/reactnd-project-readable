@@ -1,0 +1,42 @@
+.PostDisplay {
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 12px 30px 30px;
+}
+
+.PostDisplay__Topbar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.PostDisplay__PostCategoryLink {
+  display: inline-block;
+  padding: 3px 6px 6px 0;
+  margin-right: 10px;
+}
+
+.PostDisplay__PostTitle {
+  color: #005050;
+  font-size: 28px;
+  margin-top: 8px;
+}
+
+.PostDisplay__PostMeta {
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.PostDisplay__PostAuthor {
+  color: #303030;
+  font-weight: 500;
+}
+
+.PostDisplay__PostBody {
+  color: #303030;
+  margin-top: 20px;
+}
+
+.PostDisplay__Foot {
+  color: #303030;
+  margin-top: 20px;
+}

@@ -1,0 +1,47 @@
+.ControlMenu {
+  position: relative;
+  line-height: 0;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.ControlMenu__Icon {
+  display: block;
+}
+
+.ControlMenu__Buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  outline: 0;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.ControlMenu__EditButton,
+.ControlMenu__DeleteButton {
+  background: #fff;
+  display: block;
+  font-size: 14px;
+  width: 100px;
+  height: 30px;
+  outline: 0;
+}
+
+.ControlMenu__EditButton {
+  color: #606060;
+}
+
+.ControlMenu__DeleteButton {
+  color: #ec0000;
+}
+
+.ControlMenu__EditButton:hover,
+.ControlMenu__EditButton:focus {
+  background: #e4e4e4;
+}
+
+.ControlMenu__DeleteButton:hover,
+.ControlMenu__DeleteButton:focus {
+  background: #ec0000;
+  color: #fff;
+}

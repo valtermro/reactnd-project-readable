@@ -1,0 +1,38 @@
+.App {
+  /* */
+}
+
+.App__Head {
+  background: #eee;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 14px 0;
+}
+
+.App__Title {
+  color: #005050;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.FormModal {
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  padding: 80px 40px 40px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.FormModal__Content {
+  align-self: flex-start;
+  background: #fff;
+  max-height: 100%;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+  overflow: auto;
+  outline: 0;
+}

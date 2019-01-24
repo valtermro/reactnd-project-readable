@@ -1,0 +1,34 @@
+.VoteMenu {
+  display: flex;
+  align-items: center;
+}
+
+.VoteMenu__UpVoteButton,
+.VoteMenu__DownVoteButton {
+  line-height: 0;
+  padding: 6px 8px;
+}
+
+.VoteMenu__UpVoteButton {
+  margin-right: 5px;
+}
+
+.VoteMenu__UpVoteIcon {
+  color: #00b200;
+}
+
+.VoteMenu__DownVoteIcon {
+  color: #ec0000;
+}
+
+.VoteMenu__Score {
+  margin-left: 2px;
+}
+
+.VoteMenu__Score.positive {
+  color: #00b200;
+}
+
+.VoteMenu__Score.negative {
+  color: #ec0000;
+}

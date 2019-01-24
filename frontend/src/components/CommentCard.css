@@ -1,0 +1,29 @@
+.CommentCard {
+  background: #eee;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 20px 30px;
+  margin-top: 30px;
+}
+
+.CommentCard:first-child {
+  margin-top: 0;
+}
+
+.CommentCard__Head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.CommentCard__Author {
+  color: #303030;
+  font-weight: 500;
+}
+
+.CommentCard__Body {
+  color: #303030;
+  margin-top: 20px;
+}
+
+.CommentCard__Foot {
+  margin-top: 20px;
+}

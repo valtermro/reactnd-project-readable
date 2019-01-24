@@ -1,0 +1,29 @@
+.CommentForm {
+  width: 280px;
+}
+
+.CommentForm__Text {
+  height: 100px;
+}
+
+
+.PostDetail__ComentList {
+  margin-top: 30px;
+}
+
+
+@media screen and (min-width: 480px) {
+  .CommentForm {
+    width: 360px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .CommentForm {
+    width: 560px;
+  }
+
+  .CommentForm__FormGroup:not(.full-width) {
+    max-width: 300px;
+  }
+}

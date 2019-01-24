@@ -1,0 +1,9 @@
+.PostList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.PostList__Empty {
+  font-size: 20px;
+}

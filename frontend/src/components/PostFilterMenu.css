@@ -1,0 +1,49 @@
+.PostFilterMenu {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.PostFilterMenu__Group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 34px;
+  margin-bottom: 20px;
+}
+
+.PostFilterMenu__Label {
+  width: 120px;
+}
+
+.PostFilterMenu__Input {
+  border: 1px solid #e0e0e0;
+  font-size: 15px;
+  height: 100%;
+  padding: 0 8px;
+  width: 100%;
+}
+
+
+@media screen and (min-width: 768px) {
+  .PostFilterMenu__Group {
+    width: auto;
+    margin-right: 30px;
+  }
+
+  .PostFilterMenu__Group:last-child {
+    margin-right: 0;
+    flex-grow: 1;
+  }
+
+  .PostFilterMenu__Label {
+    width: auto;
+    margin-right: 10px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .PostFilterMenu__Group {
+    width: auto;
+    margin-bottom: 0;
+  }
+}
